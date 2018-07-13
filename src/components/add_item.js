@@ -6,9 +6,6 @@ import Button from './button';
 class AddItem extends Component {
     renderForm(context){
         const { add, inputChange, item, clearInput } = context;
-        const btnStyle = {
-            paddingTop: '26px'
-        }
 
         return (
             <form onSubmit={add} className="row">
