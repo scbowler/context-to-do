@@ -1,5 +1,17 @@
+.list-item:hover {
+    cursor: pointer;
+}
+
 .row .form-buttons {
     padding-top: 24px;
+}
+
+.complete {
+    color: #c1c1c1;
+}
+
+.complete div:first-child {
+    text-decoration: line-through;
 }
 
 .adding {

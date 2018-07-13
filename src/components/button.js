@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default props => {
-    const { type, icon, color, className, onClick } = props;
+class Button extends Component {
+    handleClick(e){
+        e.stopPropagation();
 
-    return (
-        <button onClick={onClick} type={type || 'submit'} className={`btn btn-floating ${className || ''} ${color || ''}`}>
-            <i className="material-icons">{icon}</i>
-        </button>
-    )
+        const { onClick } = this.props;
+        if(typeof onClick === 'function'){
+            onClick.apply(this, arguments);
+        }
+    }
+
+    render(){
+        const { type, icon, color, className } = this.props;
+
+        return (
+            <button onClick={this.handleClick.bind(this)} type={type || 'submit'} className={`btn btn-floating ${className || ''} ${color || ''}`}>
+                <i className="material-icons">{icon}</i>
+            </button>
+        )
+    }
 }
+
+export default Button;

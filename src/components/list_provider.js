@@ -14,18 +14,23 @@ class ListProvider extends Component {
             clearInput: this.clearInput.bind(this),
             inputChange: this.inputChange.bind(this),
             add: this.addItem.bind(this),
-            delete: this.deleteItem.bind(this)
+            delete: this.deleteItem.bind(this),
+            toggleComplete: this.toggleComplete.bind(this)
         }
     }
     addItem(e) {
         e.preventDefault();
 
         const { item, list } = this.state;
+        const newItem = {
+            text: item,
+            complete: false
+        };
 
         if (item) {
             this.setState({
                 item: '',
-                list: [item, ...list],
+                list: [newItem, ...list],
                 adding: true
             });
         }
@@ -59,7 +64,17 @@ class ListProvider extends Component {
         
         this.setState({
             item: target.value
-        })
+        });
+    }
+
+    toggleComplete(index){
+        const updatedList = this.state.list.slice();
+
+        updatedList[index].complete = !updatedList[index].complete;
+
+        this.setState({
+            list: updatedList
+        });
     }
 
     render(){

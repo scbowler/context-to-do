@@ -17,7 +17,7 @@ class AddItem extends Component {
                     <Button onClick={clearInput} type="button" icon="clear" color="red darken-1" />
                 </div>
             </form>
-        )
+        );
     }
     render(){
         return (

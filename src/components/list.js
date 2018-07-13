@@ -6,7 +6,7 @@ export default props => {
     function renderList(context){
         const listItems = context.list.map((item, index) => {
             const className = context.adding && !index ? 'adding' : context.deleting === index ? 'deleting' : '';
-            return <Item delete={context.delete.bind(this, index)} className={className} key={index} text={item} />;
+            return <Item complete={context.toggleComplete.bind(this, index)} delete={context.delete.bind(this, index)} className={className} key={index} item={item} />;
         });
 
         return (
